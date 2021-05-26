@@ -75,4 +75,7 @@ dependencies {
     api Libs.kotlinx_coroutines_android
 
     api Libs.lifecycle_viewmodel_ktx
+
+    api Libs.fragment_ktx
+    api Libs.activity_ktx
 }

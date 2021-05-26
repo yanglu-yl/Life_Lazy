@@ -1,6 +1,7 @@
 package com.example.module_home.net
 
 import com.example.module_home.bean.DailyBean
+import com.example.module_home.bean.FindBean
 import com.example.module_home.bean.HRecommendBean
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -19,8 +20,10 @@ class HomeRepository private constructor(private val network: HomeNetwork){
         }
     }
 
-    suspend fun getFind() = withContext(Dispatchers.IO){
-        network.getFind()
+    suspend fun getFind(): FindBean.Find {
+       return withContext(Dispatchers.IO){
+           network.getFind()
+       }
     }
 
     companion object{
@@ -35,7 +38,7 @@ class HomeRepository private constructor(private val network: HomeNetwork){
                     }
                 }
             }
-            return repository!!
+            return repository
         }
     }
 }

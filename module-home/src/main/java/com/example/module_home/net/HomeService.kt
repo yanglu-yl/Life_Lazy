@@ -16,5 +16,5 @@ interface HomeService {
     suspend fun getDaily(@Query("num") num: Int) : DailyBean.Daily
 
     @GET(Api.FIND)
-    suspend fun getFind()
+    suspend fun getFind(): FindBean.Find
 }

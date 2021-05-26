@@ -30,6 +30,9 @@ object Versions {
 
     //jetpack
     val lifecycle_viewmodel_ktx = "2.1.0-alpha03"
+    
+    val fragment_ktx = "1.3.3"
+    val activity_ktx = "1.2.3"
 }
 
 object Libs {
@@ -66,4 +69,7 @@ object Libs {
     val kotlinx_coroutines_android  = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinx_coroutines_android}"
 
     val lifecycle_viewmodel_ktx =  "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_viewmodel_ktx}"
+
+    val fragment_ktx = "androidx.fragment:fragment-ktx:${Versions.fragment_ktx}"
+    val activity_ktx = "androidx.activity:activity-ktx:${Versions.activity_ktx}"
 }

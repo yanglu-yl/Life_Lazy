@@ -12,14 +12,13 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel (private val repository: HomeRepository) : ViewModel() {
 
-
     var findData = MutableLiveData<FindBean.Find>()
     var dailyData = MutableLiveData<DailyBean.Daily>()
     var hRecommendData = MutableLiveData<HRecommendBean.HRecommend>()
 
     fun getFind(): MutableLiveData<FindBean.Find>{
         launch({
-            findData.value = repository.getFind() as FindBean.Find
+            findData.value = repository.getFind()
         },{
             Log.e("ERROR",it.message.toString())
         })
