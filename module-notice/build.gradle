@@ -1,0 +1,71 @@
+if (isDebug.toBoolean()){
+    apply plugin: 'com.android.library'
+}else {
+    apply plugin: 'com.android.application'
+}
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion AndroidConfig.compileSdkVersion
+    buildToolsVersion AndroidConfig.buildToolsVersion
+
+    defaultConfig {
+
+        if (!isDebug.toBoolean()){
+            applicationId "com.example.moduleNotice"
+        }
+
+        minSdkVersion AndroidConfig.defaultConfig.minSdkVersion
+        targetSdkVersion AndroidConfig.defaultConfig.targetSdkVersion
+        versionCode AndroidConfig.defaultConfig.versionCode
+        versionName AndroidConfig.defaultConfig.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        if (!isDebug.toBoolean()){
+            sourceSets{
+                main{
+                    manifest.srcFile 'src/main/component/AndroidManifest.xml'
+                }
+            }
+        }
+
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures{
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    testImplementation Libs.junit
+    androidTestImplementation Libs.androidx_junit
+    androidTestImplementation Libs.espresso_core
+
+    implementation project(':library-network')
+    implementation project(':library-base')
+
+    kapt 'com.alibaba:arouter-compiler:latest.release'
+}

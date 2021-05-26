@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion AndroidConfig.compileSdkVersion
+    buildToolsVersion AndroidConfig.buildToolsVersion
+
+    defaultConfig {
+        applicationId AndroidConfig.defaultConfig.applicationId
+        minSdkVersion AndroidConfig.defaultConfig.minSdkVersion
+        targetSdkVersion AndroidConfig.defaultConfig.targetSdkVersion
+        versionCode AndroidConfig.defaultConfig.versionCode
+        versionName AndroidConfig.defaultConfig.versionName
+
+        testInstrumentationRunner AndroidConfig.defaultConfig.testInstrumentationRunner
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+}
+
+dependencies {
+
+    testImplementation Libs.junit
+    androidTestImplementation Libs.androidx_junit
+    androidTestImplementation Libs.espresso_core
+
+    implementation project(':library-network')
+    implementation project(':library-base')
+    implementation project(':module-enrtance')
+    implementation project(':module-home')
+    implementation project(':module-community')
+    implementation project(':module-notice')
+    implementation project(':module-enrtance')
+    implementation project(':module-user')
+
+}

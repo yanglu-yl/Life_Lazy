@@ -1,0 +1,10 @@
+include ':library-network'
+include ':library-base'
+include ':module-enrtance'
+include ':module-user'
+include ':module-community'
+include ':module-home'
+include ':module-notice'
+
+include ':app'
+rootProject.name = "Life_Lazy"
